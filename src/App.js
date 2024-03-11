@@ -1,23 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import raamat1 from './img/raamat1.jpeg';
+import raamat2 from './img/raamat2.jpeg';
+import raamat3 from './img/raamat3.jpeg';
+import './Books.css';
+import BooksList from './BooksList';
+import Raamat from './Raamat';
+
+const books = [
+  {title: 'Kuidas saavutada finantsvabadus', author: 'Kristi Saare', image: raamat1},
+  {title: 'Tere, Tähemaa', author: 'Kaja Belials', image: raamat2},
+  {title: 'Tere, Arvumaa', author: 'Kaja Belials', image: raamat3},
+]
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+    <div className="container">
+      <div className="books-list">
+        <BooksList books={books} />
+      </div>
+      <div className="book-details">
+        {books.map((book) => {
+          return (
+            <Raamat title={book.title} author={book.author} image={book.image} />
+          );
+        })
+        }
+      </div>
     </div>
   );
 }
